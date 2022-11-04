@@ -50,6 +50,7 @@ func main() {
 		}
 	}()
 
+	log.Infof("Connected to Kafka: %v", brokers)
 	var i uint32
 	for {
 		select {
