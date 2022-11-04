@@ -1,0 +1,14 @@
+version: "3"
+services:
+  goflow:
+    image: 'spendleton/goflow:latest'
+    ports:
+      - '8080:8080'
+      - '6343:6343/udp'
+      - '2055:2055/udp'
+    restart: always
+    entrypoint: '/bin/sh'
+    command: >
+      -c "/goflow -kafka.brokers kafka:9092
+      -kafka.topic flows -loglevel debug -kafka.log.err=true -proto.fixedlen=true
+      "

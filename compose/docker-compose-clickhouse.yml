@@ -1,0 +1,9 @@
+version: "3"
+services:
+  db:
+    image: yandex/clickhouse-server
+    ports:
+      - 8123:8123
+    volumes:
+      - ./clickhouse:/docker-entrypoint-initdb.d/
+      - ../pb-ext/flow.proto:/var/lib/clickhouse/format_schemas/flow.proto
